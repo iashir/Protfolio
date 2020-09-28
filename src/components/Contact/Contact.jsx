@@ -42,7 +42,7 @@ class Contact extends Component {
   };
 
   render() {
-    const { errorMessage, successMessage } = this.state;
+    const { errorMessage, successMessage, name, email, subject, message } = this.state;
     return (
       <section id="contact">
         <Container>
@@ -53,22 +53,42 @@ class Contact extends Component {
                 <Form className="contact-F" onSubmit={this.sendEmail}>
                   <Form.Group controlId="formBasicEmail">
                     <Form.Label>Email Address</Form.Label>
-                    <Form.Control type="email" name="email" onChange={this.handleChange} />
+                    <Form.Control
+                      value={email}
+                      type="email"
+                      name="email"
+                      onChange={this.handleChange}
+                    />
                   </Form.Group>
 
                   <Form.Group controlId="formBasicName">
                     <Form.Label>Name</Form.Label>
-                    <Form.Control type="text" name="name" onChange={this.handleChange} />
+                    <Form.Control
+                      value={name}
+                      type="text"
+                      name="name"
+                      onChange={this.handleChange}
+                    />
                   </Form.Group>
 
                   <Form.Group controlId="formBasicSubject">
                     <Form.Label>Subject</Form.Label>
-                    <Form.Control type="text" name="subject" onChange={this.handleChange} />
+                    <Form.Control
+                      value={subject}
+                      type="text"
+                      name="subject"
+                      onChange={this.handleChange}
+                    />
                   </Form.Group>
 
                   <Form.Group controlId="formBasicMessage">
                     <Form.Label>Message</Form.Label>
-                    <Form.Control type="text" name="message" onChange={this.handleChange} />
+                    <Form.Control
+                      value={message}
+                      type="text"
+                      name="message"
+                      onChange={this.handleChange}
+                    />
                   </Form.Group>
 
                   {errorMessage && (
