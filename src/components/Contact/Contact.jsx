@@ -3,6 +3,7 @@ import Fade from 'react-reveal/Fade';
 import { Container, Form, Button } from 'react-bootstrap';
 import Title from '../Title/Title';
 import emailjs from 'emailjs-com';
+import { service_id, template_id, user_id } from '../../config';
 class Contact extends Component {
   state = { name: '', email: '', message: '', subject: '', errorMessage: '', successMessage: '' };
 
@@ -16,7 +17,7 @@ class Contact extends Component {
     if (!name || !email || !message || !subject)
       return this.setState({ errorMessage: 'Please enter all fields' });
 
-    emailjs.sendForm('gmail', 'template_oifxkp9', e.target, 'user_M1xZLr3apJONlQtt8uuMg').then(
+    emailjs.sendForm(service_id, template_id, e.target, user_id).then(
       (result) => {
         this.setState({
           successMessage: 'Thank you!',
