@@ -1,35 +1,104 @@
-import React, { useContext } from 'react';
+import React, { Component } from 'react';
 import Fade from 'react-reveal/Fade';
-import { Container } from 'react-bootstrap';
-import PortfolioContext from '../../context/context';
+import { Container, Form, Button } from 'react-bootstrap';
 import Title from '../Title/Title';
+import emailjs from 'emailjs-com';
+class Contact extends Component {
+  state = { name: '', email: '', message: '', subject: '', errorMessage: '', successMessage: '' };
 
-const Contact = () => {
-  const { contact } = useContext(PortfolioContext);
-  const { cta, btn, email } = contact;
+  handleChange = (e) => {
+    this.setState({ [e.target.name]: e.target.value, errorMessage: '' });
+  };
 
-  return (
-    <section id="contact">
-      <Container>
-        <Title title="Contact" />
-        <Fade bottom duration={1000} delay={800} distance="30px">
-          <div className="contact-wrapper">
-            <p className="contact-wrapper__text">
-              {cta || 'Would you like to work with me? Awesome!'}
-            </p>
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
-              className="cta-btn cta-btn--resume"
-              href={email ? `mailto:${email}` : 'https://github.com/cobidev/react-simplefolio'}
-            >
-              {btn || "Let's Talk"}
-            </a>
-          </div>
-        </Fade>
-      </Container>
-    </section>
-  );
-};
+  sendEmail = (e) => {
+    e.preventDefault();
+    const { name, email, message, subject } = this.state;
+    if (!name || !email || !message || !subject)
+      return this.setState({ errorMessage: 'Please enter all fields' });
+
+    emailjs.sendForm('gmail', 'template_oifxkp9', e.target, 'user_M1xZLr3apJONlQtt8uuMg').then(
+      (result) => {
+        this.setState({
+          successMessage: 'Thank you!',
+          errorMessage: '',
+          name: '',
+          email: '',
+          message: '',
+          subject: '',
+        });
+      },
+      (error) => {
+        this.setState({
+          errorMessage: 'Error occured',
+          successMessage: '',
+          name: '',
+          email: '',
+          message: '',
+          subject: '',
+        });
+      }
+    );
+  };
+
+  render() {
+    const { errorMessage, successMessage } = this.state;
+    return (
+      <section id="contact">
+        <Container>
+          <Title title="Contact" />
+          <Fade bottom duration={1000} delay={800} distance="30px">
+            <div className="contact-wrapper">
+              <Container>
+                <Form className="contact-F" onSubmit={this.sendEmail}>
+                  <Form.Group controlId="formBasicEmail">
+                    <Form.Label>Email Address</Form.Label>
+                    <Form.Control type="email" name="email" onChange={this.handleChange} />
+                  </Form.Group>
+
+                  <Form.Group controlId="formBasicName">
+                    <Form.Label>Name</Form.Label>
+                    <Form.Control type="text" name="name" onChange={this.handleChange} />
+                  </Form.Group>
+
+                  <Form.Group controlId="formBasicSubject">
+                    <Form.Label>Subject</Form.Label>
+                    <Form.Control type="text" name="subject" onChange={this.handleChange} />
+                  </Form.Group>
+
+                  <Form.Group controlId="formBasicMessage">
+                    <Form.Label>Message</Form.Label>
+                    <Form.Control type="text" name="message" onChange={this.handleChange} />
+                  </Form.Group>
+
+                  {errorMessage && (
+                    <div
+                      style={{ backgroundColor: 'red', margin: '1rem 0rem', padding: '1rem 0rem' }}
+                    >
+                      {errorMessage}
+                    </div>
+                  )}
+                  {successMessage && (
+                    <div
+                      style={{
+                        backgroundColor: 'green',
+                        margin: '1rem 0rem',
+                        padding: '1rem 0rem',
+                      }}
+                    >
+                      {successMessage}
+                    </div>
+                  )}
+                  <Button variant="link" className="cta-btn cta-btn--resume" type="submit">
+                    Submit
+                  </Button>
+                </Form>
+              </Container>
+            </div>
+          </Fade>
+        </Container>
+      </section>
+    );
+  }
+}
 
 export default Contact;

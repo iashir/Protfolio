@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import Fade from 'react-reveal/Fade';
 import Tilt from 'react-tilt';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col, Badge } from 'react-bootstrap';
 import PortfolioContext from '../../context/context';
 import Title from '../Title/Title';
 import ProjectImg from '../Image/ProjectImg';
@@ -28,7 +28,7 @@ const Projects = () => {
         <div className="project-wrapper">
           <Title title="Projects" />
           {projects.map((project) => {
-            const { title, info, info2, url, repo, img, id } = project;
+            const { title, info, info2, url, repo, img, id, info3, info4 } = project;
 
             return (
               <Row key={id}>
@@ -47,7 +47,41 @@ const Projects = () => {
                           {info ||
                             'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Excepturi neque, ipsa animi maiores repellendu distinctioaperiam earum dolor voluptatum consequatur blanditiis inventore debitis fuga numquam voluptate architecto itaque molestiae.'}
                         </p>
-                        <p className="mb-4">{info2 || ''}</p>
+                        <p className="mb-4">Front-end:</p>
+                        <p className="mb-4">
+                          {info2 &&
+                            info2.map((data, i) => (
+                              <Badge key={i} pill variant="secondary" style={{ margin: '0.5rem' }}>
+                                {data}
+                              </Badge>
+                            ))}
+                        </p>
+                        <p className="mb-4">{info3 && 'Back-end:'}</p>
+                        <p className="mb-4">
+                          {info3 &&
+                            info3.map((data, i) => (
+                              <Badge key={i} pill variant="secondary" style={{ margin: '0.5rem' }}>
+                                {data}
+                              </Badge>
+                            ))}
+                        </p>
+                        <p className="mb-4">{info4 && 'Third party API:'}</p>
+                        <p className="mb-4">
+                          {info4 && (
+                            <a
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="cta-btn text-color-main"
+                              href={info4}
+                            >
+                              {info4}
+                            </a>
+                          )}
+                        </p>
+                        <p className="mb-4" style={{ fontStyle: 'italic', fontSize: '0.75rem' }}>
+                          Sometimes it may take extra time to load the website because I'm using
+                          free services on Heroku
+                        </p>
                       </div>
                       <a
                         target="_blank"
