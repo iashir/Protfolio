@@ -48,7 +48,6 @@ const Skills = () => {
   ]);
   const [otherSkills] = useState([
     { icon: herokuIcon, name: 'Heroku' },
-    { icon: awsIcon, name: 'AWS' },
     { icon: netlifyIcon, name: 'Netlify' },
     { icon: cplusIcon, name: 'C++' },
     { icon: gitIcon, name: 'Git' },
@@ -60,6 +59,7 @@ const Skills = () => {
     { icon: angularIcon, name: 'Angular' },
     { icon: vueIcon, name: 'Vue' },
     { icon: graphqlIcon, name: 'GraplQL' },
+    { icon: awsIcon, name: 'AWS' },
   ]);
 
   useEffect(() => {
