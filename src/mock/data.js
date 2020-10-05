@@ -19,7 +19,7 @@ export const heroData = {
 export const aboutData = {
   img: 'mern.jpg',
   paragraphOne:
-    "A self-motivated and ambitious IT professional with high-level proficiency in web development seeks to establish a career as the Software Developer. I am very confident and passionate about programming and exploring new technologies, thereby, constantly upgrading and upskilling myself. I'm currently looking for a Full-time/Part-time job.",
+    'A self-motivated and ambitious IT professional with high-level proficiency in web development seeks to establish a career as the Software Developer. I am very confident and passionate about programming and exploring new technologies, thereby, constantly upgrading and upskilling myself.',
   resume: '../../images/mern.jpg', // if no resume, the button will not show up
 };
 
@@ -30,9 +30,8 @@ export const projectsData = [
     img: 'sneaker-store.jpg',
     title: 'Sneaker store',
     info:
-      'Online Sneaker Store where users are able to buy products with paypal payment system. This website has form validation, SignIn/SignUp feature, add to card and remove from cart, search item bar, filter products feature and view payment history',
-    info2: ['React', 'Redux', 'Antd-UI'],
-    info3: ['Node', 'Express', 'MongoDB'],
+      'E-commerce Business to Consumer (B2C) project. Allows consumers to buy their favorite shoes by using the PayPal payment system.',
+    info2: ['MERN stack'],
     url: 'https://sneaker-store-project.herokuapp.com/',
     repo: 'https://github.com/iashir/Sneaker-store-project', // if no repo, the button will not show up
   },
@@ -41,9 +40,8 @@ export const projectsData = [
     img: 'covid-map.jpg',
     title: 'Covid-19 live map',
     info:
-      "This website consist only with front-end and shows data from third party API called 'disease-sh'. For better user expirience data displayed in bar-chart, line-chart (chronological data for the last 30 days) and cards per selected country or worldwide as default. Also, google maps dynamically marks the selected country.",
-    info2: ['React', 'Material-UI'],
-    info3: '',
+      "Single page application that receives data from 'disease-sh' API. Data displayed dynamically for the selected country or worldwide as default in charts, cards, and marked in Google-maps.",
+    info2: ['React', 'Google-maps'],
     info4: 'https://github.com/disease-sh/API',
     url: 'https://covid-live-map.herokuapp.com/',
     repo: 'https://github.com/iashir/covid-live-map', // if no repo, the button will not show up
@@ -53,9 +51,8 @@ export const projectsData = [
     img: 'recipe-app.jpg',
     title: 'Recipes app',
     info:
-      'This is basically social media for people who passioned in coocking and who wants to share their recipes with the world. Users are able to make CRUD operations with their recipes, make them public or private (only followers are able to see), follow other users, leave comments, like posts or comments.',
-    info2: ['React', 'Materialize'],
-    info3: ['Node', 'Express', 'MongoDB'],
+      'An online platform where people can share their recipes with the world. This website has all basic functionalities of social media such as follow/unfollow, like/dislike posts or comments, leave comments and reply to them. Also, users are able to create (public or private posts), update, delete posts and comments. After following of selected user the follower able to see private recipe posts.',
+    info2: ['MERN stack'],
     url: 'https://shrouded-falls-29751.herokuapp.com',
     repo: 'https://github.com/iashir/recipe-app-project', // if no repo, the button will not show up
   },

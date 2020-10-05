@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import Fade from 'react-reveal/Fade';
 import { Container, Form, Button } from 'react-bootstrap';
-import Title from '../Title/Title';
 import emailjs from 'emailjs-com';
+import Title from '../Title/Title';
 import { service_id, template_id, user_id } from '../../config';
+
 class Contact extends Component {
-  state = { name: '', email: '', message: '', subject: '', errorMessage: '', successMessage: '' };
+  state = { name: '', email: '', message: '', errorMessage: '', successMessage: '' };
 
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value, errorMessage: '' });
@@ -13,36 +14,33 @@ class Contact extends Component {
 
   sendEmail = (e) => {
     e.preventDefault();
-    const { name, email, message, subject } = this.state;
-    if (!name || !email || !message || !subject)
+    const { name, email, message } = this.state;
+    if (!name || !email || !message)
       return this.setState({ errorMessage: 'Please enter all fields' });
 
     emailjs.sendForm(service_id, template_id, e.target, user_id).then(
       (result) => {
         this.setState({
-          successMessage: 'Thank you!',
           errorMessage: '',
           name: '',
           email: '',
           message: '',
-          subject: '',
         });
+        alert('Thank you!');
       },
       (error) => {
         this.setState({
           errorMessage: 'Error occured',
-          successMessage: '',
           name: '',
           email: '',
           message: '',
-          subject: '',
         });
       }
     );
   };
 
   render() {
-    const { errorMessage, successMessage, name, email, subject, message } = this.state;
+    const { errorMessage, name, email, message } = this.state;
     return (
       <section id="contact">
         <Container>
@@ -71,21 +69,12 @@ class Contact extends Component {
                     />
                   </Form.Group>
 
-                  <Form.Group controlId="formBasicSubject">
-                    <Form.Label>Subject</Form.Label>
-                    <Form.Control
-                      value={subject}
-                      type="text"
-                      name="subject"
-                      onChange={this.handleChange}
-                    />
-                  </Form.Group>
-
                   <Form.Group controlId="formBasicMessage">
                     <Form.Label>Message</Form.Label>
                     <Form.Control
+                      as="textarea"
+                      rows={5}
                       value={message}
-                      type="text"
                       name="message"
                       onChange={this.handleChange}
                     />
@@ -96,17 +85,6 @@ class Contact extends Component {
                       style={{ backgroundColor: 'red', margin: '1rem 0rem', padding: '1rem 0rem' }}
                     >
                       {errorMessage}
-                    </div>
-                  )}
-                  {successMessage && (
-                    <div
-                      style={{
-                        backgroundColor: 'green',
-                        margin: '1rem 0rem',
-                        padding: '1rem 0rem',
-                      }}
-                    >
-                      {successMessage}
                     </div>
                   )}
                   <Button variant="link" className="cta-btn cta-btn--resume" type="submit">

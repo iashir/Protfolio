@@ -4,37 +4,15 @@ import { Container, Row, Col, Badge } from 'react-bootstrap';
 import Title from '../Title/Title';
 import AboutImg from '../Image/AboutImg';
 import PortfolioContext from '../../context/context';
-import resume from './Ilyas_Ashir_Resume.pdf';
+import resume from './Ilyas_Ashir.pdf';
 
 const About = () => {
   const { about } = useContext(PortfolioContext);
   const { img, paragraphOne } = about;
-  const [skills, setSkills] = useState([]);
   const [isDesktop, setIsDesktop] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    const list = [
-      'React',
-      'Redux',
-      'HTML',
-      'CSS',
-      'Handlebars',
-      'MongoDB',
-      'PostgreSQL',
-      'Node',
-      'Express',
-      'Bootsrap',
-      'Material-UI',
-      'Git',
-      'Github',
-      'JSON',
-      'JQuery',
-      'SQL',
-      'Heroku',
-      'AWS',
-    ];
-    setSkills(list);
     if (window.innerWidth > 769) {
       setIsDesktop(true);
       setIsMobile(false);
@@ -62,14 +40,6 @@ const About = () => {
                 <p className="about-wrapper__info-text">
                   {paragraphOne ||
                     'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Excepturi neque, ipsa animi maiores repellendu distinctioaperiam earum dolor voluptatum consequatur blanditiis inventore debitis fuga numquam voluptate architecto itaque molestiae.'}
-                </p>
-                <p className="about-wrapper__info-text">
-                  {skills &&
-                    skills.map((data, i) => (
-                      <Badge key={i} pill variant="light" style={{ margin: '0.5rem' }}>
-                        {data}
-                      </Badge>
-                    ))}
                 </p>
 
                 <span className="d-flex mt-3">
