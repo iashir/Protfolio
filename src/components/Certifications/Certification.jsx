@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
-
 import { Container, Row } from 'react-bootstrap';
-
-import { Document, Page } from 'react-pdf/dist/esm/entry.webpack';
+import { Document, Page } from 'react-pdf';
 
 // using ES6 modules
 
@@ -42,7 +40,7 @@ const Certification = () => {
         <Title title="Certifications" />
         <Row className="justify-content-md-center">
           <Document file={samplePDF} onLoadSuccess={onDocumentLoadSuccess} width={100}>
-            <Page pageNumber={pageNumber} width={pdfWidth}></Page>
+            <Page pageNumber={pageNumber} width={pdfWidth} />
           </Document>
         </Row>
         <Row className="justify-content-md-center">
