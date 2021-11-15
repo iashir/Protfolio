@@ -32,7 +32,7 @@ const Header = () => {
             <br />
             {subtitle || "I'm the Unknown Developer."}
             <Typed
-              strings={['Full-Stack Developer', 'Front-End Developer', 'Back-End Developer']}
+              strings={['Web Developer', 'Front-End Developer']}
               typeSpeed={75}
               backSpeed={50}
               loop

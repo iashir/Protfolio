@@ -1,10 +1,10 @@
 import React, { useContext, useState, useEffect } from 'react';
 import Fade from 'react-reveal/Fade';
-import { Container, Row, Col, Badge } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 import Title from '../Title/Title';
 import AboutImg from '../Image/AboutImg';
 import PortfolioContext from '../../context/context';
-import resume from './Ilyas_Ashir.pdf';
+import resume from './ilyas_ashir_resume.pdf';
 
 const About = () => {
   const { about } = useContext(PortfolioContext);
